@@ -1,0 +1,3 @@
+[submodule "daylight"]
+	path = daylight
+	url = git@github.com:pastillilabs/daylight.git
