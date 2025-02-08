@@ -2,9 +2,11 @@ cmake_minimum_required(VERSION 3.27)
 
 project(qtdaylight LANGUAGES CXX)
 
-find_package(Qt6 6.5 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core)
 
-qt_standard_project_setup()
+qt_standard_project_setup(
+    REQUIRES 6.8
+)
 
 file(GLOB SOURCES CONFIGURE_DEPENDS daylight/source/*.cpp daylight/include/daylight/*.hpp)
 qt_add_library(${PROJECT_NAME}
