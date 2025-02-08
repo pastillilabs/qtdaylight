@@ -2,8 +2,12 @@ cmake_minimum_required(VERSION 3.27)
 
 project(qtdaylight LANGUAGES CXX)
 
+find_package(Qt6 6.5 REQUIRED COMPONENTS Core)
+
+qt_standard_project_setup()
+
 file(GLOB SOURCES CONFIGURE_DEPENDS daylight/source/*.cpp daylight/include/daylight/*.hpp)
-add_library(${PROJECT_NAME}
+qt_add_library(${PROJECT_NAME}
     ${SOURCES}
 )
 
@@ -26,6 +30,11 @@ target_include_directories(${PROJECT_NAME}
 target_compile_definitions(${PROJECT_NAME}
     PRIVATE
         DAYLIGHT_LIBRARY
+)
+
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        Qt${QT_VERSION_MAJOR}::Core
 )
 
 add_custom_target(${PROJECT_NAME}-root
